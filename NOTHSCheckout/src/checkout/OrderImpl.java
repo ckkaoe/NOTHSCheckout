@@ -16,6 +16,7 @@ public class OrderImpl implements Order{
 	private Map<String, OrderedItem> orderedItemList = new HashMap<String, OrderedItem>();
 	private double finalAmount = 0.0;
 	private double totalDiscountRate = 1.0;
+	private final String filepath = ".//data/Item.csv";
 
 	public OrderImpl() {
 		readItemList();
@@ -33,7 +34,7 @@ public class OrderImpl implements Order{
 	private void readItemList() {
 		ItemList itemList= new ItemListImpl();
 		ImportItemFromCSV csv = new ImportItemFromCSV();
-		itemList = csv.readFile(".//data/Item.csv");
+		itemList = csv.readFile(filepath);
 		addItemToShop(itemList);
 	}
 
